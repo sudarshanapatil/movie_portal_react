@@ -1,13 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import { Switch, Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
+import Home from './components/Home';
+import Navbar from './components/Navbar'
+
+const routing = (
+  <Router>    
+    <Navbar/>
+    <Switch>
+      <Route exact path="/" component={Home} />
+      {/* <Route exact path="/contact" component={ContactUs} /> */}
+    </Switch>
+  </Router>
+)
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  routing,
   document.getElementById('root')
 );
 
