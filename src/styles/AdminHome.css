@@ -1,0 +1,20 @@
+.adminShowMovie{
+    color:white;
+    /* margin-left: 8%;
+    margin-right: 8%; */
+}
+
+.tableTitle{
+    color: white;
+}
+
+.movieTableContainer{
+    margin-left: 8%;
+    margin-right: 8%;
+}
+
+.addMovieForm{
+    margin-left: 8%;
+    margin-right: 8%;
+    margin-top: 3%;
+}

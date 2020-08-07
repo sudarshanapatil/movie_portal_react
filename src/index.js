@@ -7,16 +7,15 @@ import Home from './components/Home';
 import Navbar from './components/Navbar'
 import ShowData from './components/ShowData';
 import Login from './components/Login';
-import AddMovie from './components/AddMovie';
+import AdminHome from './components/AdminHome';
 
 const routing = (
   <Router>
-    <Navbar />
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path='/show' component={ShowData} />
-      <Route path='/login' component={Login} />
-      <Route path='/add' component={AddMovie} />
+      <Route path='/admin/login' component={Login} />
+      <Route path='/adminhome' component={AdminHome} />
       {/* <Route exact path="/contact" component={ContactUs} /> */}
     </Switch>
   </Router>
