@@ -1,0 +1,25 @@
+.showDataContainer{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* justify-content: center; */
+    margin-left: 8%;
+    margin-right: 8%;
+}
+
+.showImage{
+    border-radius: 10px;
+    margin:5px;
+    display:'flex';
+    background-color: whitesmoke;
+
+}
+
+.searchTitle{
+    color: white;
+    font-size: large;
+}
+
+.sortTitle{
+    color:white;
+}

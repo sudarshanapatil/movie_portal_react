@@ -5,12 +5,18 @@ import { Switch, Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import Home from './components/Home';
 import Navbar from './components/Navbar'
+import ShowData from './components/ShowData';
+import Login from './components/Login';
+import AddMovie from './components/AddMovie';
 
 const routing = (
-  <Router>    
-    <Navbar/>
+  <Router>
+    <Navbar />
     <Switch>
       <Route exact path="/" component={Home} />
+      <Route path='/show' component={ShowData} />
+      <Route path='/login' component={Login} />
+      <Route path='/add' component={AddMovie} />
       {/* <Route exact path="/contact" component={ContactUs} /> */}
     </Switch>
   </Router>
