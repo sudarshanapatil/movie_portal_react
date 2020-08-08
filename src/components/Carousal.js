@@ -1,55 +1,41 @@
 import React from 'react';
-import { Container, Row, Carousel } from 'react-bootstrap';
+import { Carousel } from 'react-bootstrap';
+import '../styles/Carousel.css'
 
-let stylesheet = {
-	"img-carousel": {
-		width: "100vw",
-		height: "60vh"
-	}
-}
+let carouselData = [{
+  id: 1,
+  image: require('../images/banner1.jpg'),
+  text: "1"
+},
+{
+  id: 2,
+  image: require('../images/banner2.jpg'),
+  text: "1"
+},
+{
+  id: 3,
+  image: require('../images/banner3.jpg'),
+  text: "1"
+}];
+
 function CarousalHome() {
-	return (
-		<>
-			<Carousel>
-				<Carousel.Item>
-					<img
-						// className={stylesheet["img-carousel"]}
-						style={stylesheet["img-carousel"]}
-						src={(require('../images/B1.jpg'))}
-						alt="First slide"
-					/>
-					<Carousel.Caption>
-						<h3>First slide label</h3>
-						<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-					</Carousel.Caption>
-				</Carousel.Item>
-				<Carousel.Item>
-					<img
-						style={stylesheet["img-carousel"]}
-						src={(require('../images/B2.jpg'))}
-						alt="Third slide"
-					/>
-
-					<Carousel.Caption>
-						<h3>Second slide label</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-					</Carousel.Caption>
-				</Carousel.Item>
-				<Carousel.Item>
-					<img
-						style={stylesheet["img-carousel"]}
-						src={(require('../images/B3.jpg'))}
-						alt="Third slide"
-					/>
-
-					<Carousel.Caption>
-						<h3>Third slide label</h3>
-						<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-					</Carousel.Caption>
-				</Carousel.Item>
-			</Carousel>
-		</>
-	);
+  return (
+    <Carousel>
+      {carouselData.map(item => {
+        return (
+          <Carousel.Item key={item.id}>
+            <img style={{
+              width: "100%",
+              height: "50%"
+            }}
+              src={item.image}
+              alt={item.text}
+            />
+          </Carousel.Item>
+        )
+      })}
+    </Carousel>
+  );
 }
 
 export default CarousalHome;
