@@ -238,7 +238,7 @@ class AddMovie extends Component {
             <Form.Label column sm='3'>
               Select genre
             </Form.Label>
-            <Col sm='6'>
+            <Col sm='6' style={{color:'#000'}}>
               <Select
                 defaultValue={this.state.defaultSelectedGenres}
                 options={this.state.genres}
