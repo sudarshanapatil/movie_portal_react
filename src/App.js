@@ -7,17 +7,15 @@ import Home from './components/Home';
 import Navbar from './components/Navbar'
 import Movies from './components/ShowData';
 
-function App() {
+function App({ history }) {
   return (
     <>
-      <Navbar />
-      <Router>
-        <Switch>
-          <Route path='/movies' component={Movies} />
-          <Route path='/' component={Home} />
-          <Redirect to='/' />
-        </Switch>
-      </Router>
+      <Navbar history = {history} />
+      <Switch>
+        <Route path='/movies' component={Movies} />
+        <Route path='/' component={Home} />
+        <Redirect to='/' />
+      </Switch>
     </>
   );
 }

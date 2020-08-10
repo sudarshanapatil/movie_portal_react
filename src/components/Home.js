@@ -2,60 +2,34 @@ import React from 'react';
 import axios from 'axios';
 
 import Carousal from './Carousal';
-
 import '../styles/Home.css'
 import '../styles/Home.css'
+import conf from '../conf.json';
 
-const baseUrl = "http://localhost:5000/filter";
-
-let dummyData = [{
-  "movieName": "Men in Black 3 ",
-  "director": "Barry Sonnenfeld",
-  "rating": "6.8",
-  "releaseYear": "2012",
-  "language": "English",
-},
-{
-  "movieName": "Men in Black 3 ",
-  "director": "Barry Sonnenfeld",
-  "rating": "6.8",
-  "releaseYear": "2012",
-  "language": "English",
-},
-{
-  "movieName": "Men in Black 3 ",
-  "director": "Barry Sonnenfeld",
-  "rating": "6.8",
-  "releaseYear": "2012",
-  "language": "English",
-},
-{
-  "movieName": "Men in Black 3 ",
-  "director": "Barry Sonnenfeld",
-  "rating": "6.8",
-  "releaseYear": "2012",
-  "language": "English",
-},
-{
-  "movieName": "Men in Black 3 ",
-  "director": "Barry Sonnenfeld",
-  "rating": "6.8",
-  "releaseYear": "2012",
-  "language": "English",
-}];
+const baseUrl = `${conf.dev.baseUrl}filter`;
 
 const homePageLists = [{
-  title: 'Latest Movies',
+  title: "What's new",
   content: [],
   sortField: 'releaseYear'
 }, {
   title: 'Popular Movies',
   content: [],
   sortField: 'rating'
+},
+{
+  title: 'Best In Action',
+  content: [],
+  genre: 'Action'
 }, {
-  title: 'Happy Birthday Brad Pitt',
+  title: 'Happy Birthday Brad Pitt!',
   content: [],
   search: 'Brad Pitt'
+},
+{
+  title: 'Hollywood Comedy Movies',
+  content: [],
+  genre: 'Comedy'
 }];
 
 class Home extends React.Component {
@@ -80,10 +54,10 @@ class Home extends React.Component {
       params['search'] = data['search'];
     }
     return axios.post(baseUrl, params).then((response) => {
-      let categoryData = this.state.categoryData.map(function(categoryItem, i) {
-        const obj = {...categoryItem}
+      let categoryData = this.state.categoryData.map(function (categoryItem, i) {
+        const obj = { ...categoryItem }
         if (i === index) {
-          obj['content'] = response.data;
+          obj['content'] = response.data.data;
         }
         return obj;
       });
@@ -91,27 +65,17 @@ class Home extends React.Component {
         categoryData,
       });
     })
-    .catch(() => {
-      let categoryData = this.state.categoryData.filter(function(categoryItem, i) {
-        if (i === index) {
-          return false;
-        }
-        return true;
-      });
-      this.setState({
-        categoryData,
-      });
-      // let categoryData = this.state.categoryData.map(function(categoryItem, i) {
-      //   const obj = {...categoryItem}
-      //   if (i === index) {
-      //     obj['content'] = dummyData;
-      //   }
-      //   return obj;
-      // });
-      // this.setState({
-      //   categoryData,
-      // });
-    })
+      .catch(() => {
+        let categoryData = this.state.categoryData.filter(function (categoryItem, i) {
+          if (i === index) {
+            return false;
+          }
+          return true;
+        });
+        this.setState({
+          categoryData,
+        });
+      })
   }
 
   componentDidMount() {
@@ -132,11 +96,11 @@ class Home extends React.Component {
                 {categoryItem.content.map((content) => (
                   <div className="category-list-item" key={content._id}>
                     <img
-                    className="category-list-item-img"
-                    src={require(`../images/movie${Math.floor(Math.random() * 6) + 1}.jpg`)}
-                    >  
+                      className="category-list-item-img"
+                      src={require(`../images/movie${Math.floor(Math.random() * 6) + 1}.jpg`)}
+                    >
                     </img>
-                    <p><b>{content.movieName}</b></p>
+                    <p style={{color:'white'}}>{content.movieName}</p>
                   </div>
                 ))}
               </div>
@@ -149,4 +113,3 @@ class Home extends React.Component {
 }
 
 export default Home;
-

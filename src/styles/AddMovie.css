@@ -1,0 +1,23 @@
+.adminTitle{
+  background-color:rgb(31, 54, 128);;
+  padding: 1%;
+  height:3%;
+  font-size: 30px;
+  color: white;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.upperDiv{
+  display: flex;
+  margin: 3%;
+}
+
+.goBack {
+  float: left;
+  color: white;
+  width: 40px;
+  cursor: pointer;
+}

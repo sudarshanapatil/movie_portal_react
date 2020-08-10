@@ -2,26 +2,36 @@ import React from 'react';
 import {
   Button, Form, Navbar, Nav, FormControl
 } from 'react-bootstrap';
+import { Link } from 'react-router-dom'
 import '../styles/Navbar.css';
-import Select from 'react-select';
-let genre = [
-  { value: 'All Genres', label: 'All Genres' },
-  { value: 'Comedy', label: 'Comedy', },
-  { value: 'Action', label: 'Action', },
-  { value: 'Horror', label: 'Horror' }
-];
 
 class NavbarComp extends React.Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super();
     this.state = {
-      defaultValue: 'Select a color',
-      currentValues: []
+      search: ""
     }
   }
-  selectGenre = (event) => {
-    console.log(event.target)
+
+  handleChange(e) {
+    this.setState({
+      search: e.target.value
+    });
   }
+
+  handleSearch(e) {
+    e.preventDefault();
+    if (this.state.search !== "") {
+      this.props.history.push({
+        pathname: '/movies',
+        searchData: this.state.search,
+        emptySearch: () => {
+          this.setState({search: ''})
+        }
+      });
+    }
+  }
+
   render() {
     return (
       <Navbar bg="light" expand="lg">
@@ -31,17 +41,15 @@ class NavbarComp extends React.Component {
             <Nav.Link className='navMenu' href="/">Home</Nav.Link>
             <Nav.Link href="/movies">Movies</Nav.Link>
           </Nav>
-          {/* <Select
-            closeMenuOnSelect={false}
-            defaultValue={[{ label: 'all genre' }]}
-            isMulti
-            options={genre}
-            onChange={this.selectGenre}
-          // styles={colourStyles}
-          /> */}
-          <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            <Button variant="outline-success">Search</Button>
+          <Form inline onSubmit={(e) => this.handleSearch(e)}>
+            <FormControl
+              type="text"
+              placeholder="Search"
+              className="mr-sm-2"
+              value={this.state.search}
+              onChange={(e) => this.handleChange(e)}
+            />
+            <Button style={{backgroundColor:"blue"}} onClick={(e) => this.handleSearch(e)}>Search</Button>
           </Form>
         </Navbar.Collapse>
       </Navbar>

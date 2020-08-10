@@ -1,57 +1,50 @@
-import React, { Component } from 'react'
-import '../App.css'
-import '../styles/Login.css'
-import { Button, Form } from 'react-bootstrap'
+import React, { Component } from 'react';
+import axios from 'axios';
+import { Form } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 
+import UserContext from '../context/user';
+import '../App.css';
+import '../styles/Login.css';
+import conf from '../conf.json';
+
+const baseUrl = conf.dev.baseUrl;
 class Login extends Component {
   constructor() {
     super()
     this.state = {
-      name: '',
+      username: '',
       password: ''
     }
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleChange = this.handleChange.bind(this)
   }
-  login = () => {
-    console.log('In register USer');
-  }
-  handleChange(event) {
-    console.log(event.target.name, event.target.value)
+
+  handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value })
   }
-  handleSubmit(event, updateUsername) {
-    console.log('in submit')
-    event.preventDefault()
-    let { name, password } = this.state;
 
-    fetch('http://localhost:1337/login', {
-      method: 'POST', // or 'PUT'
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ name, password })
+  handleSubmit = (event) => {
+    event.preventDefault()
+    let { username, password } = this.state;
+
+    axios.post(`${baseUrl}admin/login`, {
+      username,
+      password
     })
-      .then(res => res.json())
-      .then(loginRes => {
-        console.log('in res', loginRes, this.state.name)
-        if (loginRes.code === 200)
-          updateUsername(name);
-        this.props.history.push({
-          pathname: '/home',
-          state: {
-            userName: this.state.name
-          }
-        });
+      .then((response) => {
+        if (response.status === 200) {
+          this.props.updateToken(response.data.token);
+        }
       })
       .catch(err => {
         console.log(err)
-        this.setState({
-          recipes: []
-        })
       })
   }
   render() {
+    if (this.props.token !== '') {
+      return (
+        <Redirect to="/admin" />
+      );
+    }
     return (
       <div className='login-body'>
         <div className='login-section'>
@@ -60,9 +53,9 @@ class Login extends Component {
               <Form.Label>User Name</Form.Label>
               <Form.Control
                 type='text'
-                name='name'
+                name='username'
                 placeholder='Enter username'
-                onChange={this.handleChange}
+                onChange={(e) => this.handleChange(e)}
               />
 
             </Form.Group>
@@ -71,18 +64,25 @@ class Login extends Component {
               <Form.Control
                 type='password'
                 name='password'
-                onChange={this.handleChange}
+                onChange={(e) => this.handleChange(e)}
                 placeholder='Password'
               />
             </Form.Group>
 
-            <Button variant='warning' type='submit'>
+            <button className='loginButton' variant='warning' type='submit'>
               Login
-            </Button>
+            </button>
           </Form>
         </div>
       </div>
     )
   }
 }
-export default Login
+
+const withContext = () => (
+  <UserContext.Consumer>
+    {(contextProps) => (<Login {...contextProps} />)}
+  </UserContext.Consumer>
+);
+
+export default withContext;

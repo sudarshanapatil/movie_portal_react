@@ -5,16 +5,17 @@ import {
 
 import Login from './components/Login';
 import AdminHome from './components/AdminHome';
+import Auth from './components/Auth';
 
 function Admin({ match }) {
   return (
-    <Router>
+    <Auth>
       <Switch>
         <Route path={`${match.url}/login`} component={Login} />
         <Route exact path={`${match.url}`} component={AdminHome} />
         <Redirect to={`${match.url}/login`} />
       </Switch>
-    </Router>
+    </Auth>
   );
 }
 

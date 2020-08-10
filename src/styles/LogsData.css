@@ -1,0 +1,17 @@
+th.tableTitle{
+  background-color: rgb(31, 54, 128);
+  align-items: center;
+  justify-content: center;
+}
+
+.adminTitleLogs{
+  background-color: rgb(31, 54, 128);;
+  padding: 1%;
+  height:3%;
+  font-size: 30px;
+  color: white;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}

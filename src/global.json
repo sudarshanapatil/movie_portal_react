@@ -1,0 +1,52 @@
+{
+    "genres": [
+        {
+            "value": "Action",
+            "label": "Action"
+        },
+        {
+            "value": "Adventure",
+            "label": "Adventure"
+        },
+        {
+            "value": "Fantasy",
+            "label": "Fantasy"
+        },
+        {
+            "value": "Sci-Fi",
+            "label": "Sci-Fi"
+        },
+        {
+            "value": "Animation",
+            "label": "Animation"
+        },
+        {
+            "value": "Comedy",
+            "label": "Comedy"
+        },
+        {
+            "value": "Family",
+            "label": "Family"
+        },
+        {
+            "value": "Fantasy",
+            "label": "Fantasy"
+        },
+        {
+            "value": "Musical",
+            "label": "Musical"
+        },
+        {
+            "value": "Thriller",
+            "label": "Thriller"
+        },
+        {
+            "value": "Romance",
+            "label": "Romance"
+        },
+        {
+            "value": "Mystery",
+            "label": "Mystery"
+        }
+    ]
+}
