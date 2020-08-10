@@ -6,7 +6,7 @@ import '../styles/Home.css'
 import '../styles/Home.css'
 import conf from '../conf.json';
 
-const baseUrl = `${conf.dev.baseUrl}filter`;
+const baseUrl = `${conf.production.baseUrl}filter`;
 
 const homePageLists = [{
   title: "What's new",

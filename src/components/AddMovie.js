@@ -13,7 +13,7 @@ import '../styles/AddMovie.css'
 import conf from '../conf.json';
 import genresData from '../global.json';
 
-const baseUrl = conf.dev.baseUrl;
+const baseUrl = conf.production.baseUrl;
 
 let languageData = ['English', 'Marathi', 'Hindi']
 let formData = [

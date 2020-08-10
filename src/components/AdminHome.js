@@ -14,7 +14,7 @@ import AddMovie from './AddMovie';
 import LogsData from './LogsData';
 import UserContext from '../context/user';
 
-const baseUrl = conf.dev.baseUrl;
+const baseUrl = conf.production.baseUrl;
 class AdminHome extends Component {
   constructor(props) {
     super(props)

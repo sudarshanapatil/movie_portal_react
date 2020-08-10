@@ -8,7 +8,7 @@ import '../App.css';
 import '../styles/Login.css';
 import conf from '../conf.json';
 
-const baseUrl = conf.dev.baseUrl;
+const baseUrl = conf.production.baseUrl;
 class Login extends Component {
   constructor() {
     super()

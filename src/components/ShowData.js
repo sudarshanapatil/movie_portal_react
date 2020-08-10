@@ -6,7 +6,7 @@ import Select from 'react-select'
 import '../styles/ShowData.css';
 import conf from '../conf.json';
 import genres from '../global.json';
-const baseUrl = conf.dev.baseUrl;
+const baseUrl = conf.production.baseUrl;
 class Movies extends React.Component {
   constructor(props) {
     super(props);
