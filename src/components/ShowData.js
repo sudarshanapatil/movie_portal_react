@@ -19,7 +19,7 @@ class Movies extends React.Component {
       skip: this.props.location.skip || 0,
       limit: this.props.location.limit || 10,
       genres: genres.genres,
-      loadMore: true
+      loadMore: false
     }
   }
 
@@ -56,6 +56,8 @@ class Movies extends React.Component {
       let newSkip = skip + limit;
       if (response.data.count < newSkip)
         loadMore = false
+      else
+        loadMore = true
       this.setState({
         movies,
         loadMore,
@@ -117,7 +119,7 @@ class Movies extends React.Component {
         <div className='row' id='desktop-filter'>
           <div className='col'>
             <Form.Group as={Col} controlId="formGridState">
-              <Form.Label style={{color:"white"}}>Sort By</Form.Label>
+              <Form.Label style={{ color: "white" }}>Sort By</Form.Label>
               <Select
                 options={[
                   {
@@ -141,7 +143,7 @@ class Movies extends React.Component {
           </div>
           <div className='col'>
             <Form.Group as={Col} controlId="formGridState">
-              <Form.Label style={{color:"white"}}>Select genre</Form.Label>
+              <Form.Label style={{ color: "white" }}>Select genre</Form.Label>
               <Select
                 options={this.state.genres}
                 isMulti={true}
