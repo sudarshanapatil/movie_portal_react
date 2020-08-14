@@ -1,5 +1,5 @@
 ## Movie Portal
-The applocation shows movies data on homepage. 
+The applocation shows movies data on homepage. User can search with movie title, actor name, director name. Filter the movies according to genres. Also user can sort the movie list. 
 
 ## Features
     Movies should be accessible by anyone, without auth
